@@ -21,8 +21,14 @@ app.post("/", function(req, res){
         if(currency === "EUR"){
             price = data.bpi.EUR.rate_float;
             console.log(price);
-        }else {
+        }else if(currency === "USD"){
             price = data.bpi.USD.rate_float;
+            console.log(price);
+        }else if(currency === "XBT"){
+            price = data.bpi.XBT.rate_float;
+            console.log(price);
+        }else{
+            price = 0;
             console.log(price);
         }
         
