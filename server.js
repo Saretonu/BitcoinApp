@@ -1,15 +1,19 @@
 const express = require("express");
 const request = require("request");
 const bodyParser = require("body-parser");
+const path = require('path');
 const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get("/", function(req, res){
-    res.sendFile(__dirname + "/index.html");
+app.get('/', function(req, res){
+    res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
 app.post("/", function(req, res){
     let currency = req.body.currency;
+    let ammount = req.body.ammount;
+
     let url = `https://api.coindesk.com/v1/bpi/currentprice/${currency}.json`;
     
     request(url, function(error, response, body){
@@ -31,6 +35,8 @@ app.post("/", function(req, res){
             price = 0;
             console.log(price);
         }
+        let temp = price * ammount;
+        //document.getElementById("value").innerHTML = temp;
     });  
 });
 

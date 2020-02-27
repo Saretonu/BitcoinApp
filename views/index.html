@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <title>BitCoin Rates</title>
+</head>
+<body>
+    <form action="/" method="POST" class="form-control">
+        Ammount: <input type="number" name="ammount" placeholder="Num 1">
+        <br>
+        <select name="currency">
+            <option value="USD">US Dollars</option>
+            <option value="EUR">EU Euros</option>
+            <option value="XBT">BitCoin</option>
+        </select>
+        <br>
+        <button type="submit">Check Rates</button>
+    </form>
+    
+    <h1>The value is: <span id="value"></span></h1>
+</body>
+</html>
