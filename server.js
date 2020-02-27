@@ -31,10 +31,7 @@ app.post("/", function(req, res){
             price = 0;
             console.log(price);
         }
-        
-    });
-
-   // console.log(currency);    
+    });  
 });
 
 app.listen(process.env.PORT || 3000, function(){
