@@ -28,15 +28,15 @@ app.post("/", function(req, res){
         }else if(currency === "USD"){
             price = data.bpi.USD.rate_float;
             console.log(price);
-        }else if(currency === "XBT"){
+        }/*else if(currency === "XBT"){
             price = data.bpi.XBT.rate_float;
             console.log(price);
-        }else{
+        }*/else{
             price = 0;
             console.log(price);
         }
         let temp = price * ammount;
-        //document.getElementById("value").innerHTML = temp;
+        /*document.getElementById("value").innerHTML = temp;*/
     });  
 });
 
