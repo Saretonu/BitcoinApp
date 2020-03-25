@@ -4,23 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/forms.css">
+    <link type="text/css" rel="stylesheet" href="/css/styles.css">
     <title>BitCoin Rates</title>
+
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous">
+    </script>
+    <script type="text/javascript">
+    $(function(){
+
+
+        $('#enter').click(function(){  
+        var amount =  $('#amount');
+        var currency =  $('#currency');
+        console.log("amount",amount, "currency", currency);
+        $.post('/', $('.form-control').serialize(),function(data){
+            console.log("data",data);
+            $('#result').html(data.price);
+        });
+       }); 
+    });
+  </script>
 </head>
 <body>
     <form action="/" method="POST" class="form-control">
-        Ammount: <input type="number" name="ammount" placeholder="Num 1">
-        <br>
-        <select name="currency">
-            <option value="USD">US Dollars</option>
-            <option value="EUR">EU Euros</option>
-            <!--<option value="XBT">BitCoin</option>-->
-        </select>
-        <br>
-        <button type="submit">Check Rates</button>
+        <div id="wrap" class="input">
+            <header class="input-header">
+                <h1>Bitcoin APP</h1>
+            </header>
+            <section class="input-content">
+                <h2>Bitcoin calculator</h2>
+                <div class="input-content-wrap">
+                    <dl class="inputbox">
+                        <dt class="inputbox-title">Enter amount</dt>
+                        <dd class="inputbox-content">
+                        <input id="amount" type="number" name="amount" placeholder="Amount">
+                        </dd>
+                    </dl>
+                </div>
+                <br>
+                <!--<div class="select-box">-->
+                <div class="input-content-wrap">
+                  <dl class="inputbox">
+                    <dt class="inputbox-title">Choose currency</dt>
+                        <dd class="inputbox-content">
+                          <select id="currency" name="currency">
+                              <option value="USD">US Dollars</option>
+                              <option value="EUR">EU Euros</option>
+                              <!--<option value="XBT">BitCoin</option>-->
+                          </select>
+                        </dd>
+                  </dl>
+                </div>
+                <br>
+                <button id="enter" type="button">Check Rates</button>
+                <div class="input-content-wrap">
+                  <dl class="inputbox">
+                    <dt class="inputbox-title">Answer:</dt>
+                      <dd class="inputbox-content">
+                        <div id="result"></div>
+                      </dd>
+                  </dl>
+                </div>
+            </div>
+        </section>
+      </div>
     </form>
-    
-    <h1>The value is: <span id="value"></span></h1>
+
+    <!--<div id="wrap" class="input">
+        <header class="input-header">
+          <h1>Input Text/Password Animation</h1>
+        </header>
+        <section class="input-content">
+          <h2>Input Text/Password Animation<span>Only CSS</span></h2>
+          <div class="input-content-wrap">
+            <dl class="inputbox">
+              <dt class="inputbox-title">Input Text</dt>
+              <dd class="inputbox-content">
+                <input id="input0" type="text" required/>
+                <label for="input0">ID</label>
+                <span class="underline"></span>
+              </dd>
+            </dl>
+            <dl class="inputbox">
+              <dt class="inputbox-title">Input Password</dt>
+              <dd class="inputbox-content">
+                <input id="input1" type="password" required/>
+                <label for="input1">Password</label>
+                <span class="underline"></span>
+              </dd>
+            </dl>
+            <div class="btns">
+                <button class="btn btn-confirm">Sign In</button>
+                <button class="btn btn-cancel">Cancel</button>
+            </div>
+          </div>
+        </section>
+      </div>-->
 </body>
 </html>
