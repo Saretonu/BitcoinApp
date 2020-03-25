@@ -12,7 +12,7 @@ app.get('/', function(req, res){
 
 app.post("/", function(req, res){
     let currency = req.body.currency;
-    let ammount = req.body.ammount;
+    let amount = req.body.amount;
 
     let url = `https://api.coindesk.com/v1/bpi/currentprice/${currency}.json`;
     
@@ -35,8 +35,11 @@ app.post("/", function(req, res){
             price = 0;
             console.log(price);
         }
-        let temp = price * ammount;
-        /*document.getElementById("value").innerHTML = temp;*/
+        let temp = price * amount;
+        let ret = {price: temp};
+        //document.innerHTML = "Answer: " + temp;
+        res.send(ret);
+
     });  
 });
 
